@@ -5,7 +5,7 @@ import java.util.Iterator;
 import java.util.ServiceLoader;
 import java.util.function.Function;
 
-public class Test {
+public class Demo {
 
   protected void test(String a, String b, String c, String d, String e, String f) {
 
