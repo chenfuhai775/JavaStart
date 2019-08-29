@@ -7,7 +7,7 @@ import java.util.function.Function;
 
 public class Demo {
 
-  protected void test(String a, String b, String c, String d, String e, String f) {
+  protected void Demo(String a, String b, String c, String d, String e, String f) {
 
   }
 
