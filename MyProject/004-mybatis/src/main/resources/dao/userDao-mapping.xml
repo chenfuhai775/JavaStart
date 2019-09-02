@@ -3,8 +3,22 @@
   PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"
   "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
 <mapper namespace="com.example.demo.dao.UserDao">
+  <cache-ref namespace="com.someone.application.data.SomeMapper"/>
 
-  <select id="findUserById" resultType="com.example.demo.entity.User" >
+  <cache
+    eviction="FIFO"
+    flushInterval="60000"
+    size="512"
+    readOnly="true"/>
+
+  <resultMap></resultMap>
+  <parameterMap></parameterMap>
+
+  <sql id="Base_Column_List">
+    BaseAgentID
+  </sql>
+
+  <select id="findUserById" resultType="com.example.demo.entity.User">
       select * from basecontacts where ContactID = #{id}
    </select>
 
