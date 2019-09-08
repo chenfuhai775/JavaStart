@@ -1,5 +1,6 @@
 package com.example.demo.impl;
 
+import com.alibaba.dubbo.common.URL;
 import com.example.demo.api.Car;
 
 public class CarWrapper implements Car {
@@ -9,9 +10,9 @@ public class CarWrapper implements Car {
         this.car = car;
     }
 
-    public void getColor() {
+    public void getColor(URL url) {
         System.out.println("before...");
-        car.getColor();
+        car.getColor(url);
         System.out.println("after...");
     }
 }

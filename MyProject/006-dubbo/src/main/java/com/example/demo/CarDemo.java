@@ -7,6 +7,8 @@ public class CarDemo {
     public static void main(String[] args) {
         ExtensionLoader<Car> extensionLoader = ExtensionLoader.getExtensionLoader(Car.class);
         Car redCar = extensionLoader.getExtension("red");
-        redCar.getColor();
+        redCar.getColor(null);
+        redCar = extensionLoader.getExtension("black");
+        redCar.getColor(null);
     }
 }
