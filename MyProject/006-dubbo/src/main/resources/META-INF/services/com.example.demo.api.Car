@@ -1,0 +1,3 @@
+black=com.example.demo.impl.BlackCar
+red=com.example.demo.impl.RedCar
+com.example.demo.impl.CarWrapper
