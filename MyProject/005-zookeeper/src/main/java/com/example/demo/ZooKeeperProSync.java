@@ -24,11 +24,14 @@ public class ZooKeeperProSync implements Watcher {
     //等待zk连接成功的通知
     connectedSemaphore.await();
 
-    List<String> childrens = zk.getChildren("/username", true);
-
     //获取path目录节点的配置数据，并注册默认的监听器
     System.out.println(new String(zk.getData(path, true, stat)));
 
+    List<String> childrens = zk.getChildren("/username", true);
+    for (int i = 0; i < childrens.size(); i++) {
+      System.out.println(childrens.get(i)); //Print children's
+      System.out.println(new String(zk.getData(path + "/" + childrens.get(i), true, stat)));
+    }
     Thread.sleep(Integer.MAX_VALUE);
   }
 
