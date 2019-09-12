@@ -13,7 +13,10 @@ public class MybatisHelloWorld {
   public static void main(String[] args) {
     SqlSession sqlSession = getSessionFactory().openSession();
     UserDao userMapper = sqlSession.getMapper(UserDao.class);
-    User user = userMapper.findUserById(2);
+    User user = new User();
+    user.setContactID(2);
+    user.setOrderNo("C0000002");
+    user = userMapper.findUserById(user);
     if (user != null) {
       System.out.println("編號:" + user.getContactID() + ",訂單號:" + user.getOrderNo());
     }

@@ -6,7 +6,7 @@ import lombok.Data;
 @Data
 public class User {
 
-  private BigInteger ContactID;
+  private Integer ContactID;
 
   private String OrderNo;
 }

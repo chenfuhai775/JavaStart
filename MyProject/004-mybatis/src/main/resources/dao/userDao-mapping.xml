@@ -1,25 +1,34 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper
-  PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"
-  "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+        PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"
+        "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
 <mapper namespace="com.example.demo.dao.UserDao">
 
-<!--  <cache-ref namespace="com.someone.application.data.SomeMapper"/>-->
-<!--  <cache-->
-<!--    eviction="FIFO"-->
-<!--    flushInterval="60000"-->
-<!--    size="512"-->
-<!--    readOnly="true"/>-->
+    <!--  <cache-ref namespace="com.someone.application.data.SomeMapper"/>-->
+    <!--  <cache-->
+    <!--    eviction="FIFO"-->
+    <!--    flushInterval="60000"-->
+    <!--    size="512"-->
+    <!--    readOnly="true"/>-->
 
-<!--  <resultMap id="findUserById"></resultMap>-->
-<!--  <parameterMap></parameterMap>-->
+    <resultMap id="findUserById" type="com.example.demo.entity.User">
+        <id column="ContactID" jdbcType="BIGINT" property="contactID"/>
+        <result column="OrderNo" jdbcType="VARCHAR" property="orderNo"/>
+    </resultMap>
+    <!--  <parameterMap></parameterMap>-->
 
-  <sql id="Base_Column_List">
-    BaseAgentID
+    <sql id="Base_Column_List">
+    ContactID,OrderNo
   </sql>
-
-  <select id="findUserById" resultType="com.example.demo.entity.User">
-      select * from basecontacts where ContactID = #{id}
-   </select>
+    <!--resultType="com.example.demo.entity.User"-->
+    <select useCache="false" id="findUserById" parameterType="com.example.demo.entity.User" resultMap="findUserById" >
+        select
+        <include refid="Base_Column_List"/>
+        from basecontacts
+        where ContactID = #{contactID}
+        <if test="orderNo != null">
+            AND OrderNo = #{orderNo}
+        </if>
+    </select>
 
 </mapper>

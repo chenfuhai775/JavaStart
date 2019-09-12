@@ -7,7 +7,7 @@ public interface UserDao {
 
   void insert(User user);
 
-  User findUserById(int userId);
+  User findUserById(User user);
 
   List<User> findAllUsers();
 }
