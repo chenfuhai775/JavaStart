@@ -1,5 +1,6 @@
 package com.example.demo;
 
+import com.example.demo.services.DemoServiceImpl;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
@@ -16,5 +17,7 @@ public class XmlSchemaAuthoringSampleApplication {
     System.out.println(serviceBean.getName());
     ApplicationConfig applicationConfig = applicationContext.getBean(ApplicationConfig.class);
     System.out.println(applicationConfig.getName());
+    DemoServiceImpl demoServiceImpl = applicationContext.getBean(DemoServiceImpl.class);
+    System.out.println(demoServiceImpl.getName());
   }
 }

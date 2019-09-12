@@ -12,4 +12,5 @@
 
   <kirito:service name="kirito-demo-service"/>
 
+  <bean id="demoService" class="com.example.demo.services.DemoServiceImpl"/>
 </beans>
