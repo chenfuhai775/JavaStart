@@ -1,35 +1,59 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE configuration
-  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
-  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
-  <!-- 指定properties配置文件， 我这里面配置的是数据库相关 -->
-  <properties resource="dbConfig.properties"></properties>
-  <!-- 指定Mybatis使用log4j -->
-  <settings>
-    <setting name="logImpl" value="LOG4J"/>
-  </settings>
-  <environments default="development">
-    <environment id="development">
-      <transactionManager type="JDBC"/>
-      <dataSource type="POOLED">
-        <!--
-        如果上面没有指定数据库配置的properties文件，那么此处可以这样直接配置
-      <property name="driver" value="com.mysql.jdbc.Driver"/>
-      <property name="url" value="jdbc:mysql://localhost:3306/test1"/>
-      <property name="username" value="root"/>
-      <property name="password" value="root"/>
-       -->
-        <!-- 上面指定了数据库配置文件， 配置文件里面也是对应的这四个属性 -->
-        <property name="driver" value="${driver}"/>
-        <property name="url" value="${url}"/>
-        <property name="username" value="${username}"/>
-        <property name="password" value="${password}"/>
-      </dataSource>
-    </environment>
-  </environments>
-  <!-- 映射文件，mybatis精髓， 后面才会细讲 -->
-  <mappers>
-    <mapper resource="dao/userDao-mapping.xml"/>
-  </mappers>
+    <!-- 指定properties配置文件， 我这里面配置的是数据库相关 -->
+    <properties resource="dbConfig.properties"></properties>
+    <!-- 指定Mybatis使用log4j -->
+    <settings>
+        <setting name="logImpl" value="LOG4J"/>
+    </settings>
+
+    <typeAliases>
+        <typeAlias type="com.example.demo.entity.User" alias="userEntity"></typeAlias>
+    </typeAliases>
+
+    <objectFactory type="com.example.demo.ObjectFactory.ExampleObjectFactory">
+        <property name="someProperty" value="100"/>
+    </objectFactory>
+
+    <environments default="mysql">
+        <environment id="mysql">
+            <transactionManager type="JDBC"/>
+            <dataSource type="POOLED">
+                <!--
+                如果上面没有指定数据库配置的properties文件，那么此处可以这样直接配置
+              <property name="driver" value="com.mysql.jdbc.Driver"/>
+              <property name="url" value="jdbc:mysql://localhost:3306/test1"/>
+              <property name="username" value="root"/>
+              <property name="password" value="root"/>
+               -->
+                <!-- 上面指定了数据库配置文件， 配置文件里面也是对应的这四个属性 -->
+                <property name="driver" value="${driver}"/>
+                <property name="url" value="${url}"/>
+                <property name="username" value="${username}"/>
+                <property name="password" value="${password}"/>
+            </dataSource>
+        </environment>
+        <environment id="oracle">
+            <transactionManager type="JDBC"/>
+            <dataSource type="POOLED">
+                <property name="driver" value="${oracle.jdbc.driverClass}"/>
+                <property name="url" value="${oracle.jdbc.jdbcUrl}"/>
+                <property name="username" value="${oracle.jdbc.user}"/>
+                <property name="password" value="${oracle.jdbc.password}"/>
+            </dataSource>
+        </environment>
+    </environments>
+
+    <databaseIdProvider type="DB_VENDOR">
+        <property name="MySQL" value="mysql"/>
+        <property name="Oracle" value="oracle"/>
+    </databaseIdProvider>
+
+    <!-- 映射文件，mybatis精髓， 后面才会细讲 -->
+    <mappers>
+        <mapper resource="dao/userDao-mapping.xml"/>
+    </mappers>
 </configuration>

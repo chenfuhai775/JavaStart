@@ -11,7 +11,7 @@ import org.springframework.context.annotation.ImportResource;
 public class XmlSchemaAuthoringSampleApplication {
 
   public static void main(String[] args) {
-    var applicationContext = SpringApplication
+    ConfigurableApplicationContext applicationContext = SpringApplication
         .run(XmlSchemaAuthoringSampleApplication.class, args);
     ServiceBean serviceBean = applicationContext.getBean(ServiceBean.class);
     System.out.println(serviceBean.getName());

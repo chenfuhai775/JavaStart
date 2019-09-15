@@ -21,7 +21,7 @@
     ContactID,OrderNo
   </sql>
     <!--resultType="com.example.demo.entity.User"-->
-    <select useCache="false" id="findUserById" parameterType="com.example.demo.entity.User" resultMap="findUserById" >
+    <select useCache="false" databaseId="mysql" id="findUserById" parameterType="userEntity" resultMap="findUserById" >
         select
         <include refid="Base_Column_List"/>
         from basecontacts
