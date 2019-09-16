@@ -14,14 +14,15 @@
     <resultMap id="findUserById" type="com.example.demo.entity.User">
         <id column="ContactID" jdbcType="BIGINT" property="contactID"/>
         <result column="OrderNo" jdbcType="VARCHAR" property="orderNo"/>
+        <result column="SureName" jdbcType="VARCHAR" property="sureName"/>
     </resultMap>
     <!--  <parameterMap></parameterMap>-->
 
     <sql id="Base_Column_List">
-    ContactID,OrderNo
+    ContactID,OrderNo,SureName
   </sql>
     <!--resultType="com.example.demo.entity.User"-->
-    <select useCache="false" databaseId="mysql" id="findUserById" parameterType="userEntity" resultMap="findUserById" >
+    <select useCache="false" databaseId="mysql" id="findUserById" parameterType="userEntity" resultMap="findUserById">
         select
         <include refid="Base_Column_List"/>
         from basecontacts
