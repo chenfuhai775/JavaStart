@@ -5,11 +5,8 @@
 <mapper namespace="com.example.demo.dao.UserDao">
 
     <!--  <cache-ref namespace="com.someone.application.data.SomeMapper"/>-->
-    <!--  <cache-->
-    <!--    eviction="FIFO"-->
-    <!--    flushInterval="60000"-->
-    <!--    size="512"-->
-    <!--    readOnly="true"/>-->
+
+    <cache eviction="LRU" flushInterval="60000" size="512" readOnly="true"/>
 
     <resultMap id="findUserById" type="com.example.demo.entity.User">
         <id column="ContactID" jdbcType="BIGINT" property="contactID"/>

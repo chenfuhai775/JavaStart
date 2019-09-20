@@ -16,6 +16,7 @@
     <module>005-zookeeper</module>
     <module>006-dubbo</module>
     <module>009-schemaForSpring</module>
+      <module>010_Lock</module>
   </modules>
 
   <properties>
