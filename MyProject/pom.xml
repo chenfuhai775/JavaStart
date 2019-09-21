@@ -1,28 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
 
-  <groupId>com.example.demo</groupId>
-  <artifactId>my-project</artifactId>
-  <packaging>pom</packaging>
-  <version>1.0-SNAPSHOT</version>
-  <modules>
-    <module>001-jdbc</module>
-    <module>002-proxy</module>
-    <module>003-spi</module>
-    <module>004-mybatis</module>
-    <module>005-zookeeper</module>
-    <module>006-dubbo</module>
-    <module>009-schemaForSpring</module>
-      <module>010_Lock</module>
-  </modules>
+    <groupId>com.example.demo</groupId>
+    <artifactId>my-project</artifactId>
+    <packaging>pom</packaging>
+    <version>1.0-SNAPSHOT</version>
+    <modules>
+        <module>001-jdbc</module>
+        <module>002-proxy</module>
+        <module>003-spi</module>
+        <module>004-mybatis</module>
+        <module>005-zookeeper</module>
+        <module>006-dubbo</module>
+        <module>009-schemaForSpring</module>
+        <module>010_Lock</module>
+        <module>011-Netty</module>
+    </modules>
 
-  <properties>
-    <java.version>11</java.version>
-    <maven.compiler.source>11</maven.compiler.source>
-    <maven.compiler.target>11</maven.compiler.target>
-  </properties>
+    <properties>
+        <java.version>11</java.version>
+        <maven.compiler.source>11</maven.compiler.source>
+        <maven.compiler.target>11</maven.compiler.target>
+    </properties>
 
 </project>
