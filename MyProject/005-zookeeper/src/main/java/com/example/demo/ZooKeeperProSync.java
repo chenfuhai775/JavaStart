@@ -19,7 +19,7 @@ public class ZooKeeperProSync implements Watcher {
     //zookeeper配置数据存放路径
     String path = "/username";
     //连接zookeeper并且注册一个默认的监听器
-    zk = new ZooKeeper("172.18.21.33:2181", 5000, //
+    zk = new ZooKeeper("192.168.91.133:2181", 5000, //
         new ZooKeeperProSync());
     //等待zk连接成功的通知
     connectedSemaphore.await();
