@@ -1,17 +1,25 @@
 package com.example.demo;
 
+import org.apache.curator.RetryPolicy;
+import org.apache.curator.framework.CuratorFramework;
+import org.apache.curator.framework.CuratorFrameworkFactory;
+import org.apache.curator.retry.ExponentialBackoffRetry;
+import org.apache.zookeeper.CreateMode;
+import org.apache.zookeeper.ZooKeeper;
+import org.apache.zookeeper.data.Stat;
+
 public class CuratorBase {
     //会话超时时间
-    private final int SESSION_TIMEOUT = 30 * 1000;
+    private static final int SESSION_TIMEOUT = 30 * 1000;
 
     //连接超时时间
-    private final int CONNECTION_TIMEOUT = 3 * 1000;
+    private static final int CONNECTION_TIMEOUT = 3 * 1000;
 
     //ZooKeeper服务地址
     private static final String CONNECT_ADDR = "192.168.91.133:2181";
 
     //创建连接实例
-    private CuratorFramework client = null;
+    private static CuratorFramework client = null;
 
     public static void main(String[] args) throws Exception {
         //1 重试策略：初试时间为1s 重试10次
@@ -24,10 +32,10 @@ public class CuratorBase {
 //命名空间           .namespace("super")
                 .build();
         //3 开启连接
-        cf.start();
+        client.start();
 
-        System.out.println(States.CONNECTED);
-        System.out.println(cf.getState());
+        System.out.println(ZooKeeper.States.CONNECTED);
+        System.out.println(client.getState());
 
         //创建永久节点
         client.create().forPath("/curator", "/curator data".getBytes());
